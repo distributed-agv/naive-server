@@ -69,6 +69,8 @@ grpc::Status GuideServiceImpl::GetNextStep(grpc::ServerContext *context,
           offset.DotProduct(current_to_goal) > 0)
         step_code = (Step::StepCode) k;
   }
+  if (current == goals[car_id])
+    step_code = Step::StepCode::Step_StepCode_STOP;
   
   prevs[car_id] = current;
   nexts[car_id] = current + kOffsets[step_code];
