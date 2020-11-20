@@ -10,23 +10,30 @@
 
 int main() {
   std::string server_addr = "localhost:50051";
-  std::shared_ptr<grpc::Channel> channel = grpc::CreateChannel(server_addr,
-      grpc::InsecureChannelCredentials());
+  std::shared_ptr<grpc::Channel> channel =
+      grpc::CreateChannel(server_addr, grpc::InsecureChannelCredentials());
   std::unique_ptr<Guide::Stub> stub = Guide::NewStub(channel);
 
   while (true) {
     grpc::ClientContext context;
     grpc::Status status;
-    CarPosition car_position;
+    CarState car_state;
     Step step;
-    
-    int car_id, row_idx, col_idx;
-    std::cin >> car_id >> row_idx >> col_idx;
-    car_position.set_car_id(car_id);
-    car_position.set_row_idx(row_idx);
-    car_position.set_col_idx(col_idx);
+    int car_id = 0;
+    int cur_row_idx = 0;
+    int cur_col_idx = 0;
+    int goal_row_idx = 0;
+    int goal_col_idx = 0;
 
-    status = stub->GetNextStep(&context, car_position, &step);
+    std::cin >> car_id >> cur_row_idx >> cur_col_idx
+             >> goal_row_idx >> goal_col_idx;
+    car_state.set_car_id(car_id);
+    car_state.set_cur_row_idx(cur_row_idx);
+    car_state.set_cur_col_idx(cur_col_idx);
+    car_state.set_goal_row_idx(goal_row_idx);
+    car_state.set_goal_col_idx(goal_col_idx);
+
+    status = stub->GetNextStep(&context, car_state, &step);
 
     if (status.ok())
       std::cout << step.step_code() << std::endl;

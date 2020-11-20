@@ -3,8 +3,9 @@
 
 #include <vector>
 
-class IntPair {
-public:
+struct IntPair {
+  int x;
+  int y;
   explicit IntPair();
   explicit IntPair(int, int);
   bool operator<(const IntPair &) const;
@@ -15,9 +16,6 @@ public:
   IntPair operator-(const IntPair &) const;
   int DotProduct(const IntPair &) const;
   bool Validate(int, int) const;
-private:
-  int x;
-  int y;
 };
 
 extern const std::vector<IntPair> kOffsets;

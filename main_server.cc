@@ -13,8 +13,7 @@ int main() {
   int row_num = 5;
   int col_num = 5;
   std::vector<IntPair> starts = {IntPair(0, 0), IntPair(0, 4)};
-  std::vector<IntPair> goals = {IntPair(4, 4), IntPair(4, 0)};
-  GuideServiceImpl service(row_num, col_num, starts, goals);
+  GuideServiceImpl service(row_num, col_num, starts);
   std::string server_addr = "0.0.0.0:50051";
   grpc::ServerBuilder builder;
   std::unique_ptr<grpc::Server> server;

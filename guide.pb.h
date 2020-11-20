@@ -55,14 +55,14 @@ struct TableStruct_guide_2eproto {
   static const ::PROTOBUF_NAMESPACE_ID::uint32 offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_guide_2eproto;
-class CarPosition;
-class CarPositionDefaultTypeInternal;
-extern CarPositionDefaultTypeInternal _CarPosition_default_instance_;
+class CarState;
+class CarStateDefaultTypeInternal;
+extern CarStateDefaultTypeInternal _CarState_default_instance_;
 class Step;
 class StepDefaultTypeInternal;
 extern StepDefaultTypeInternal _Step_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
-template<> ::CarPosition* Arena::CreateMaybeMessage<::CarPosition>(Arena*);
+template<> ::CarState* Arena::CreateMaybeMessage<::CarState>(Arena*);
 template<> ::Step* Arena::CreateMaybeMessage<::Step>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
@@ -96,23 +96,23 @@ inline bool Step_StepCode_Parse(
 }
 // ===================================================================
 
-class CarPosition PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CarPosition) */ {
+class CarState PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CarState) */ {
  public:
-  inline CarPosition() : CarPosition(nullptr) {}
-  virtual ~CarPosition();
+  inline CarState() : CarState(nullptr) {}
+  virtual ~CarState();
 
-  CarPosition(const CarPosition& from);
-  CarPosition(CarPosition&& from) noexcept
-    : CarPosition() {
+  CarState(const CarState& from);
+  CarState(CarState&& from) noexcept
+    : CarState() {
     *this = ::std::move(from);
   }
 
-  inline CarPosition& operator=(const CarPosition& from) {
+  inline CarState& operator=(const CarState& from) {
     CopyFrom(from);
     return *this;
   }
-  inline CarPosition& operator=(CarPosition&& from) noexcept {
+  inline CarState& operator=(CarState&& from) noexcept {
     if (GetArena() == from.GetArena()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -130,20 +130,20 @@ class CarPosition PROTOBUF_FINAL :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const CarPosition& default_instance();
+  static const CarState& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const CarPosition* internal_default_instance() {
-    return reinterpret_cast<const CarPosition*>(
-               &_CarPosition_default_instance_);
+  static inline const CarState* internal_default_instance() {
+    return reinterpret_cast<const CarState*>(
+               &_CarState_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(CarPosition& a, CarPosition& b) {
+  friend void swap(CarState& a, CarState& b) {
     a.Swap(&b);
   }
-  inline void Swap(CarPosition* other) {
+  inline void Swap(CarState* other) {
     if (other == this) return;
     if (GetArena() == other->GetArena()) {
       InternalSwap(other);
@@ -151,7 +151,7 @@ class CarPosition PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(CarPosition* other) {
+  void UnsafeArenaSwap(CarState* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -159,17 +159,17 @@ class CarPosition PROTOBUF_FINAL :
 
   // implements Message ----------------------------------------------
 
-  inline CarPosition* New() const final {
-    return CreateMaybeMessage<CarPosition>(nullptr);
+  inline CarState* New() const final {
+    return CreateMaybeMessage<CarState>(nullptr);
   }
 
-  CarPosition* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<CarPosition>(arena);
+  CarState* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<CarState>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const CarPosition& from);
-  void MergeFrom(const CarPosition& from);
+  void CopyFrom(const CarState& from);
+  void MergeFrom(const CarState& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -183,13 +183,13 @@ class CarPosition PROTOBUF_FINAL :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(CarPosition* other);
+  void InternalSwap(CarState* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "CarPosition";
+    return "CarState";
   }
   protected:
-  explicit CarPosition(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit CarState(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -210,8 +210,10 @@ class CarPosition PROTOBUF_FINAL :
 
   enum : int {
     kCarIdFieldNumber = 1,
-    kRowIdxFieldNumber = 2,
-    kColIdxFieldNumber = 3,
+    kCurRowIdxFieldNumber = 2,
+    kCurColIdxFieldNumber = 3,
+    kGoalRowIdxFieldNumber = 4,
+    kGoalColIdxFieldNumber = 5,
   };
   // int32 car_id = 1;
   void clear_car_id();
@@ -222,25 +224,43 @@ class CarPosition PROTOBUF_FINAL :
   void _internal_set_car_id(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 row_idx = 2;
-  void clear_row_idx();
-  ::PROTOBUF_NAMESPACE_ID::int32 row_idx() const;
-  void set_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 cur_row_idx = 2;
+  void clear_cur_row_idx();
+  ::PROTOBUF_NAMESPACE_ID::int32 cur_row_idx() const;
+  void set_cur_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_row_idx() const;
-  void _internal_set_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_cur_row_idx() const;
+  void _internal_set_cur_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 col_idx = 3;
-  void clear_col_idx();
-  ::PROTOBUF_NAMESPACE_ID::int32 col_idx() const;
-  void set_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 cur_col_idx = 3;
+  void clear_cur_col_idx();
+  ::PROTOBUF_NAMESPACE_ID::int32 cur_col_idx() const;
+  void set_cur_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_col_idx() const;
-  void _internal_set_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_cur_col_idx() const;
+  void _internal_set_cur_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:CarPosition)
+  // int32 goal_row_idx = 4;
+  void clear_goal_row_idx();
+  ::PROTOBUF_NAMESPACE_ID::int32 goal_row_idx() const;
+  void set_goal_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_goal_row_idx() const;
+  void _internal_set_goal_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 goal_col_idx = 5;
+  void clear_goal_col_idx();
+  ::PROTOBUF_NAMESPACE_ID::int32 goal_col_idx() const;
+  void set_goal_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_goal_col_idx() const;
+  void _internal_set_goal_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:CarState)
  private:
   class _Internal;
 
@@ -248,8 +268,10 @@ class CarPosition PROTOBUF_FINAL :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::int32 car_id_;
-  ::PROTOBUF_NAMESPACE_ID::int32 row_idx_;
-  ::PROTOBUF_NAMESPACE_ID::int32 col_idx_;
+  ::PROTOBUF_NAMESPACE_ID::int32 cur_row_idx_;
+  ::PROTOBUF_NAMESPACE_ID::int32 cur_col_idx_;
+  ::PROTOBUF_NAMESPACE_ID::int32 goal_row_idx_;
+  ::PROTOBUF_NAMESPACE_ID::int32 goal_col_idx_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_guide_2eproto;
 };
@@ -435,66 +457,106 @@ class Step PROTOBUF_FINAL :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// CarPosition
+// CarState
 
 // int32 car_id = 1;
-inline void CarPosition::clear_car_id() {
+inline void CarState::clear_car_id() {
   car_id_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::_internal_car_id() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 CarState::_internal_car_id() const {
   return car_id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::car_id() const {
-  // @@protoc_insertion_point(field_get:CarPosition.car_id)
+inline ::PROTOBUF_NAMESPACE_ID::int32 CarState::car_id() const {
+  // @@protoc_insertion_point(field_get:CarState.car_id)
   return _internal_car_id();
 }
-inline void CarPosition::_internal_set_car_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void CarState::_internal_set_car_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   car_id_ = value;
 }
-inline void CarPosition::set_car_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void CarState::set_car_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_car_id(value);
-  // @@protoc_insertion_point(field_set:CarPosition.car_id)
+  // @@protoc_insertion_point(field_set:CarState.car_id)
 }
 
-// int32 row_idx = 2;
-inline void CarPosition::clear_row_idx() {
-  row_idx_ = 0;
+// int32 cur_row_idx = 2;
+inline void CarState::clear_cur_row_idx() {
+  cur_row_idx_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::_internal_row_idx() const {
-  return row_idx_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 CarState::_internal_cur_row_idx() const {
+  return cur_row_idx_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::row_idx() const {
-  // @@protoc_insertion_point(field_get:CarPosition.row_idx)
-  return _internal_row_idx();
+inline ::PROTOBUF_NAMESPACE_ID::int32 CarState::cur_row_idx() const {
+  // @@protoc_insertion_point(field_get:CarState.cur_row_idx)
+  return _internal_cur_row_idx();
 }
-inline void CarPosition::_internal_set_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void CarState::_internal_set_cur_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  row_idx_ = value;
+  cur_row_idx_ = value;
 }
-inline void CarPosition::set_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_row_idx(value);
-  // @@protoc_insertion_point(field_set:CarPosition.row_idx)
+inline void CarState::set_cur_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_cur_row_idx(value);
+  // @@protoc_insertion_point(field_set:CarState.cur_row_idx)
 }
 
-// int32 col_idx = 3;
-inline void CarPosition::clear_col_idx() {
-  col_idx_ = 0;
+// int32 cur_col_idx = 3;
+inline void CarState::clear_cur_col_idx() {
+  cur_col_idx_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::_internal_col_idx() const {
-  return col_idx_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 CarState::_internal_cur_col_idx() const {
+  return cur_col_idx_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::col_idx() const {
-  // @@protoc_insertion_point(field_get:CarPosition.col_idx)
-  return _internal_col_idx();
+inline ::PROTOBUF_NAMESPACE_ID::int32 CarState::cur_col_idx() const {
+  // @@protoc_insertion_point(field_get:CarState.cur_col_idx)
+  return _internal_cur_col_idx();
 }
-inline void CarPosition::_internal_set_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void CarState::_internal_set_cur_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  col_idx_ = value;
+  cur_col_idx_ = value;
 }
-inline void CarPosition::set_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_col_idx(value);
-  // @@protoc_insertion_point(field_set:CarPosition.col_idx)
+inline void CarState::set_cur_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_cur_col_idx(value);
+  // @@protoc_insertion_point(field_set:CarState.cur_col_idx)
+}
+
+// int32 goal_row_idx = 4;
+inline void CarState::clear_goal_row_idx() {
+  goal_row_idx_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 CarState::_internal_goal_row_idx() const {
+  return goal_row_idx_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 CarState::goal_row_idx() const {
+  // @@protoc_insertion_point(field_get:CarState.goal_row_idx)
+  return _internal_goal_row_idx();
+}
+inline void CarState::_internal_set_goal_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  goal_row_idx_ = value;
+}
+inline void CarState::set_goal_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_goal_row_idx(value);
+  // @@protoc_insertion_point(field_set:CarState.goal_row_idx)
+}
+
+// int32 goal_col_idx = 5;
+inline void CarState::clear_goal_col_idx() {
+  goal_col_idx_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 CarState::_internal_goal_col_idx() const {
+  return goal_col_idx_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 CarState::goal_col_idx() const {
+  // @@protoc_insertion_point(field_get:CarState.goal_col_idx)
+  return _internal_goal_col_idx();
+}
+inline void CarState::_internal_set_goal_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  goal_col_idx_ = value;
+}
+inline void CarState::set_goal_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_goal_col_idx(value);
+  // @@protoc_insertion_point(field_set:CarState.goal_col_idx)
 }
 
 // -------------------------------------------------------------------
