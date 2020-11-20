@@ -57,6 +57,8 @@ grpc::Status GuideServiceImpl::GetNextStep(grpc::ServerContext *context,
           offset.DotProduct(cur_to_goal) > 0)
         step_code = (Step::StepCode) k;
   }
+  if (cur == goal)
+    step_code = Step_StepCode_STOP;
   
   pthread_mutex_lock(&mutex);
 
