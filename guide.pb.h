@@ -31,7 +31,6 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -55,64 +54,36 @@ struct TableStruct_guide_2eproto {
   static const ::PROTOBUF_NAMESPACE_ID::uint32 offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_guide_2eproto;
-class CarPosition;
-class CarPositionDefaultTypeInternal;
-extern CarPositionDefaultTypeInternal _CarPosition_default_instance_;
+class Point;
+class PointDefaultTypeInternal;
+extern PointDefaultTypeInternal _Point_default_instance_;
 class Step;
 class StepDefaultTypeInternal;
 extern StepDefaultTypeInternal _Step_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
-template<> ::CarPosition* Arena::CreateMaybeMessage<::CarPosition>(Arena*);
+template<> ::Point* Arena::CreateMaybeMessage<::Point>(Arena*);
 template<> ::Step* Arena::CreateMaybeMessage<::Step>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
-enum Step_StepCode : int {
-  Step_StepCode_LEFT = 0,
-  Step_StepCode_RIGHT = 1,
-  Step_StepCode_FORWARD = 2,
-  Step_StepCode_BACKWARD = 3,
-  Step_StepCode_STOP = 4,
-  Step_StepCode_Step_StepCode_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
-  Step_StepCode_Step_StepCode_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
-};
-bool Step_StepCode_IsValid(int value);
-constexpr Step_StepCode Step_StepCode_StepCode_MIN = Step_StepCode_LEFT;
-constexpr Step_StepCode Step_StepCode_StepCode_MAX = Step_StepCode_STOP;
-constexpr int Step_StepCode_StepCode_ARRAYSIZE = Step_StepCode_StepCode_MAX + 1;
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Step_StepCode_descriptor();
-template<typename T>
-inline const std::string& Step_StepCode_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, Step_StepCode>::value ||
-    ::std::is_integral<T>::value,
-    "Incorrect type passed to function Step_StepCode_Name.");
-  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    Step_StepCode_descriptor(), enum_t_value);
-}
-inline bool Step_StepCode_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, Step_StepCode* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Step_StepCode>(
-    Step_StepCode_descriptor(), name, value);
-}
 // ===================================================================
 
-class CarPosition PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CarPosition) */ {
+class Point PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Point) */ {
  public:
-  inline CarPosition() : CarPosition(nullptr) {}
-  virtual ~CarPosition();
+  inline Point() : Point(nullptr) {}
+  virtual ~Point();
 
-  CarPosition(const CarPosition& from);
-  CarPosition(CarPosition&& from) noexcept
-    : CarPosition() {
+  Point(const Point& from);
+  Point(Point&& from) noexcept
+    : Point() {
     *this = ::std::move(from);
   }
 
-  inline CarPosition& operator=(const CarPosition& from) {
+  inline Point& operator=(const Point& from) {
     CopyFrom(from);
     return *this;
   }
-  inline CarPosition& operator=(CarPosition&& from) noexcept {
+  inline Point& operator=(Point&& from) noexcept {
     if (GetArena() == from.GetArena()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -130,20 +101,20 @@ class CarPosition PROTOBUF_FINAL :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const CarPosition& default_instance();
+  static const Point& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const CarPosition* internal_default_instance() {
-    return reinterpret_cast<const CarPosition*>(
-               &_CarPosition_default_instance_);
+  static inline const Point* internal_default_instance() {
+    return reinterpret_cast<const Point*>(
+               &_Point_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(CarPosition& a, CarPosition& b) {
+  friend void swap(Point& a, Point& b) {
     a.Swap(&b);
   }
-  inline void Swap(CarPosition* other) {
+  inline void Swap(Point* other) {
     if (other == this) return;
     if (GetArena() == other->GetArena()) {
       InternalSwap(other);
@@ -151,7 +122,7 @@ class CarPosition PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(CarPosition* other) {
+  void UnsafeArenaSwap(Point* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -159,17 +130,17 @@ class CarPosition PROTOBUF_FINAL :
 
   // implements Message ----------------------------------------------
 
-  inline CarPosition* New() const final {
-    return CreateMaybeMessage<CarPosition>(nullptr);
+  inline Point* New() const final {
+    return CreateMaybeMessage<Point>(nullptr);
   }
 
-  CarPosition* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<CarPosition>(arena);
+  Point* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<Point>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const CarPosition& from);
-  void MergeFrom(const CarPosition& from);
+  void CopyFrom(const Point& from);
+  void MergeFrom(const Point& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -183,13 +154,13 @@ class CarPosition PROTOBUF_FINAL :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(CarPosition* other);
+  void InternalSwap(Point* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "CarPosition";
+    return "Point";
   }
   protected:
-  explicit CarPosition(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit Point(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -209,47 +180,91 @@ class CarPosition PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kCarIdFieldNumber = 1,
-    kRowIdxFieldNumber = 2,
-    kColIdxFieldNumber = 3,
+    kCarFieldNumber = 1,
+    kLastXFieldNumber = 2,
+    kLastYFieldNumber = 3,
+    kNowXFieldNumber = 4,
+    kNowYFieldNumber = 5,
+    kGoalXFieldNumber = 6,
+    kGoalYFieldNumber = 7,
   };
-  // int32 car_id = 1;
-  void clear_car_id();
-  ::PROTOBUF_NAMESPACE_ID::int32 car_id() const;
-  void set_car_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 car = 1;
+  void clear_car();
+  ::PROTOBUF_NAMESPACE_ID::int32 car() const;
+  void set_car(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_car_id() const;
-  void _internal_set_car_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_car() const;
+  void _internal_set_car(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 row_idx = 2;
-  void clear_row_idx();
-  ::PROTOBUF_NAMESPACE_ID::int32 row_idx() const;
-  void set_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 lastX = 2;
+  void clear_lastx();
+  ::PROTOBUF_NAMESPACE_ID::int32 lastx() const;
+  void set_lastx(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_row_idx() const;
-  void _internal_set_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_lastx() const;
+  void _internal_set_lastx(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 col_idx = 3;
-  void clear_col_idx();
-  ::PROTOBUF_NAMESPACE_ID::int32 col_idx() const;
-  void set_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 lastY = 3;
+  void clear_lasty();
+  ::PROTOBUF_NAMESPACE_ID::int32 lasty() const;
+  void set_lasty(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_col_idx() const;
-  void _internal_set_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_lasty() const;
+  void _internal_set_lasty(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:CarPosition)
+  // int32 nowX = 4;
+  void clear_nowx();
+  ::PROTOBUF_NAMESPACE_ID::int32 nowx() const;
+  void set_nowx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_nowx() const;
+  void _internal_set_nowx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 nowY = 5;
+  void clear_nowy();
+  ::PROTOBUF_NAMESPACE_ID::int32 nowy() const;
+  void set_nowy(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_nowy() const;
+  void _internal_set_nowy(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 goalX = 6;
+  void clear_goalx();
+  ::PROTOBUF_NAMESPACE_ID::int32 goalx() const;
+  void set_goalx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_goalx() const;
+  void _internal_set_goalx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 goalY = 7;
+  void clear_goaly();
+  ::PROTOBUF_NAMESPACE_ID::int32 goaly() const;
+  void set_goaly(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_goaly() const;
+  void _internal_set_goaly(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Point)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::int32 car_id_;
-  ::PROTOBUF_NAMESPACE_ID::int32 row_idx_;
-  ::PROTOBUF_NAMESPACE_ID::int32 col_idx_;
+  ::PROTOBUF_NAMESPACE_ID::int32 car_;
+  ::PROTOBUF_NAMESPACE_ID::int32 lastx_;
+  ::PROTOBUF_NAMESPACE_ID::int32 lasty_;
+  ::PROTOBUF_NAMESPACE_ID::int32 nowx_;
+  ::PROTOBUF_NAMESPACE_ID::int32 nowy_;
+  ::PROTOBUF_NAMESPACE_ID::int32 goalx_;
+  ::PROTOBUF_NAMESPACE_ID::int32 goaly_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_guide_2eproto;
 };
@@ -365,54 +380,28 @@ class Step PROTOBUF_FINAL :
 
   // nested types ----------------------------------------------------
 
-  typedef Step_StepCode StepCode;
-  static constexpr StepCode LEFT =
-    Step_StepCode_LEFT;
-  static constexpr StepCode RIGHT =
-    Step_StepCode_RIGHT;
-  static constexpr StepCode FORWARD =
-    Step_StepCode_FORWARD;
-  static constexpr StepCode BACKWARD =
-    Step_StepCode_BACKWARD;
-  static constexpr StepCode STOP =
-    Step_StepCode_STOP;
-  static inline bool StepCode_IsValid(int value) {
-    return Step_StepCode_IsValid(value);
-  }
-  static constexpr StepCode StepCode_MIN =
-    Step_StepCode_StepCode_MIN;
-  static constexpr StepCode StepCode_MAX =
-    Step_StepCode_StepCode_MAX;
-  static constexpr int StepCode_ARRAYSIZE =
-    Step_StepCode_StepCode_ARRAYSIZE;
-  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
-  StepCode_descriptor() {
-    return Step_StepCode_descriptor();
-  }
-  template<typename T>
-  static inline const std::string& StepCode_Name(T enum_t_value) {
-    static_assert(::std::is_same<T, StepCode>::value ||
-      ::std::is_integral<T>::value,
-      "Incorrect type passed to function StepCode_Name.");
-    return Step_StepCode_Name(enum_t_value);
-  }
-  static inline bool StepCode_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
-      StepCode* value) {
-    return Step_StepCode_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   enum : int {
-    kStepCodeFieldNumber = 1,
+    kNextXFieldNumber = 1,
+    kNextYFieldNumber = 2,
   };
-  // .Step.StepCode step_code = 1;
-  void clear_step_code();
-  ::Step_StepCode step_code() const;
-  void set_step_code(::Step_StepCode value);
+  // int32 nextX = 1;
+  void clear_nextx();
+  ::PROTOBUF_NAMESPACE_ID::int32 nextx() const;
+  void set_nextx(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::Step_StepCode _internal_step_code() const;
-  void _internal_set_step_code(::Step_StepCode value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_nextx() const;
+  void _internal_set_nextx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 nextY = 2;
+  void clear_nexty();
+  ::PROTOBUF_NAMESPACE_ID::int32 nexty() const;
+  void set_nexty(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_nexty() const;
+  void _internal_set_nexty(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:Step)
@@ -422,7 +411,8 @@ class Step PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int step_code_;
+  ::PROTOBUF_NAMESPACE_ID::int32 nextx_;
+  ::PROTOBUF_NAMESPACE_ID::int32 nexty_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_guide_2eproto;
 };
@@ -435,90 +425,190 @@ class Step PROTOBUF_FINAL :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// CarPosition
+// Point
 
-// int32 car_id = 1;
-inline void CarPosition::clear_car_id() {
-  car_id_ = 0;
+// int32 car = 1;
+inline void Point::clear_car() {
+  car_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::_internal_car_id() const {
-  return car_id_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::_internal_car() const {
+  return car_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::car_id() const {
-  // @@protoc_insertion_point(field_get:CarPosition.car_id)
-  return _internal_car_id();
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::car() const {
+  // @@protoc_insertion_point(field_get:Point.car)
+  return _internal_car();
 }
-inline void CarPosition::_internal_set_car_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void Point::_internal_set_car(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  car_id_ = value;
+  car_ = value;
 }
-inline void CarPosition::set_car_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_car_id(value);
-  // @@protoc_insertion_point(field_set:CarPosition.car_id)
-}
-
-// int32 row_idx = 2;
-inline void CarPosition::clear_row_idx() {
-  row_idx_ = 0;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::_internal_row_idx() const {
-  return row_idx_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::row_idx() const {
-  // @@protoc_insertion_point(field_get:CarPosition.row_idx)
-  return _internal_row_idx();
-}
-inline void CarPosition::_internal_set_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  
-  row_idx_ = value;
-}
-inline void CarPosition::set_row_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_row_idx(value);
-  // @@protoc_insertion_point(field_set:CarPosition.row_idx)
+inline void Point::set_car(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_car(value);
+  // @@protoc_insertion_point(field_set:Point.car)
 }
 
-// int32 col_idx = 3;
-inline void CarPosition::clear_col_idx() {
-  col_idx_ = 0;
+// int32 lastX = 2;
+inline void Point::clear_lastx() {
+  lastx_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::_internal_col_idx() const {
-  return col_idx_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::_internal_lastx() const {
+  return lastx_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 CarPosition::col_idx() const {
-  // @@protoc_insertion_point(field_get:CarPosition.col_idx)
-  return _internal_col_idx();
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::lastx() const {
+  // @@protoc_insertion_point(field_get:Point.lastX)
+  return _internal_lastx();
 }
-inline void CarPosition::_internal_set_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void Point::_internal_set_lastx(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  col_idx_ = value;
+  lastx_ = value;
 }
-inline void CarPosition::set_col_idx(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_col_idx(value);
-  // @@protoc_insertion_point(field_set:CarPosition.col_idx)
+inline void Point::set_lastx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_lastx(value);
+  // @@protoc_insertion_point(field_set:Point.lastX)
+}
+
+// int32 lastY = 3;
+inline void Point::clear_lasty() {
+  lasty_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::_internal_lasty() const {
+  return lasty_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::lasty() const {
+  // @@protoc_insertion_point(field_get:Point.lastY)
+  return _internal_lasty();
+}
+inline void Point::_internal_set_lasty(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  lasty_ = value;
+}
+inline void Point::set_lasty(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_lasty(value);
+  // @@protoc_insertion_point(field_set:Point.lastY)
+}
+
+// int32 nowX = 4;
+inline void Point::clear_nowx() {
+  nowx_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::_internal_nowx() const {
+  return nowx_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::nowx() const {
+  // @@protoc_insertion_point(field_get:Point.nowX)
+  return _internal_nowx();
+}
+inline void Point::_internal_set_nowx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  nowx_ = value;
+}
+inline void Point::set_nowx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_nowx(value);
+  // @@protoc_insertion_point(field_set:Point.nowX)
+}
+
+// int32 nowY = 5;
+inline void Point::clear_nowy() {
+  nowy_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::_internal_nowy() const {
+  return nowy_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::nowy() const {
+  // @@protoc_insertion_point(field_get:Point.nowY)
+  return _internal_nowy();
+}
+inline void Point::_internal_set_nowy(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  nowy_ = value;
+}
+inline void Point::set_nowy(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_nowy(value);
+  // @@protoc_insertion_point(field_set:Point.nowY)
+}
+
+// int32 goalX = 6;
+inline void Point::clear_goalx() {
+  goalx_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::_internal_goalx() const {
+  return goalx_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::goalx() const {
+  // @@protoc_insertion_point(field_get:Point.goalX)
+  return _internal_goalx();
+}
+inline void Point::_internal_set_goalx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  goalx_ = value;
+}
+inline void Point::set_goalx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_goalx(value);
+  // @@protoc_insertion_point(field_set:Point.goalX)
+}
+
+// int32 goalY = 7;
+inline void Point::clear_goaly() {
+  goaly_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::_internal_goaly() const {
+  return goaly_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Point::goaly() const {
+  // @@protoc_insertion_point(field_get:Point.goalY)
+  return _internal_goaly();
+}
+inline void Point::_internal_set_goaly(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  goaly_ = value;
+}
+inline void Point::set_goaly(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_goaly(value);
+  // @@protoc_insertion_point(field_set:Point.goalY)
 }
 
 // -------------------------------------------------------------------
 
 // Step
 
-// .Step.StepCode step_code = 1;
-inline void Step::clear_step_code() {
-  step_code_ = 0;
+// int32 nextX = 1;
+inline void Step::clear_nextx() {
+  nextx_ = 0;
 }
-inline ::Step_StepCode Step::_internal_step_code() const {
-  return static_cast< ::Step_StepCode >(step_code_);
+inline ::PROTOBUF_NAMESPACE_ID::int32 Step::_internal_nextx() const {
+  return nextx_;
 }
-inline ::Step_StepCode Step::step_code() const {
-  // @@protoc_insertion_point(field_get:Step.step_code)
-  return _internal_step_code();
+inline ::PROTOBUF_NAMESPACE_ID::int32 Step::nextx() const {
+  // @@protoc_insertion_point(field_get:Step.nextX)
+  return _internal_nextx();
 }
-inline void Step::_internal_set_step_code(::Step_StepCode value) {
+inline void Step::_internal_set_nextx(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  step_code_ = value;
+  nextx_ = value;
 }
-inline void Step::set_step_code(::Step_StepCode value) {
-  _internal_set_step_code(value);
-  // @@protoc_insertion_point(field_set:Step.step_code)
+inline void Step::set_nextx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_nextx(value);
+  // @@protoc_insertion_point(field_set:Step.nextX)
+}
+
+// int32 nextY = 2;
+inline void Step::clear_nexty() {
+  nexty_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Step::_internal_nexty() const {
+  return nexty_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Step::nexty() const {
+  // @@protoc_insertion_point(field_get:Step.nextY)
+  return _internal_nexty();
+}
+inline void Step::_internal_set_nexty(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  nexty_ = value;
+}
+inline void Step::set_nexty(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_nexty(value);
+  // @@protoc_insertion_point(field_set:Step.nextY)
 }
 
 #ifdef __GNUC__
@@ -529,16 +619,6 @@ inline void Step::set_step_code(::Step_StepCode value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-
-PROTOBUF_NAMESPACE_OPEN
-
-template <> struct is_proto_enum< ::Step_StepCode> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::Step_StepCode>() {
-  return ::Step_StepCode_descriptor();
-}
-
-PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

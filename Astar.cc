@@ -1,4 +1,4 @@
-#include "util.h"
+#include "Astar.h"
 int** map;
 
 Astar::Astar(int col,int row,int car)
@@ -127,7 +127,7 @@ void Astar::printPath( Node* current ,int *x,int *y)
         }
         current=current->father;
     }
-}
+
 void Astar::printMap()
 {
     for(int i=0;i<=row;i++){

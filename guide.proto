@@ -1,22 +1,20 @@
 syntax = "proto3";
 
-message CarPosition {
-  int32 car_id = 1;
-  int32 row_idx = 2;
-  int32 col_idx = 3;
+message Point {
+  int32 car = 1;
+  int32 lastX = 2;
+  int32 lastY = 3;
+  int32 nowX = 4;
+  int32 nowY = 5;
+  int32 goalX =6;
+  int32 goalY =7;
 }
 
 message Step {
-  enum StepCode {
-    LEFT = 0;
-    RIGHT = 1;
-    FORWARD = 2;
-    BACKWARD = 3;
-    STOP = 4;
-  }
-  StepCode step_code = 1;
+  int32 nextX = 1;
+  int32 nextY = 2;
 }
 
 service Guide {
-  rpc GetNextStep(CarPosition) returns (Step) {}
+  rpc GetNextStep(Point) returns (Step) {}
 }

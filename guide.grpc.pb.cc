@@ -34,23 +34,23 @@ Guide::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_GetNextStep_(Guide_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status Guide::Stub::GetNextStep(::grpc::ClientContext* context, const ::CarPosition& request, ::Step* response) {
+::grpc::Status Guide::Stub::GetNextStep(::grpc::ClientContext* context, const ::Point& request, ::Step* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetNextStep_, context, request, response);
 }
 
-void Guide::Stub::experimental_async::GetNextStep(::grpc::ClientContext* context, const ::CarPosition* request, ::Step* response, std::function<void(::grpc::Status)> f) {
+void Guide::Stub::experimental_async::GetNextStep(::grpc::ClientContext* context, const ::Point* request, ::Step* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetNextStep_, context, request, response, std::move(f));
 }
 
-void Guide::Stub::experimental_async::GetNextStep(::grpc::ClientContext* context, const ::CarPosition* request, ::Step* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void Guide::Stub::experimental_async::GetNextStep(::grpc::ClientContext* context, const ::Point* request, ::Step* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetNextStep_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::Step>* Guide::Stub::PrepareAsyncGetNextStepRaw(::grpc::ClientContext* context, const ::CarPosition& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::Step>* Guide::Stub::PrepareAsyncGetNextStepRaw(::grpc::ClientContext* context, const ::Point& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::Step>::Create(channel_.get(), cq, rpcmethod_GetNextStep_, context, request, false);
 }
 
-::grpc::ClientAsyncResponseReader< ::Step>* Guide::Stub::AsyncGetNextStepRaw(::grpc::ClientContext* context, const ::CarPosition& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::Step>* Guide::Stub::AsyncGetNextStepRaw(::grpc::ClientContext* context, const ::Point& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncGetNextStepRaw(context, request, cq);
   result->StartCall();
@@ -61,10 +61,10 @@ Guide::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Guide_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Guide::Service, ::CarPosition, ::Step>(
+      new ::grpc::internal::RpcMethodHandler< Guide::Service, ::Point, ::Step>(
           [](Guide::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::CarPosition* req,
+             const ::Point* req,
              ::Step* resp) {
                return service->GetNextStep(ctx, req, resp);
              }, this)));
@@ -73,7 +73,7 @@ Guide::Service::Service() {
 Guide::Service::~Service() {
 }
 
-::grpc::Status Guide::Service::GetNextStep(::grpc::ServerContext* context, const ::CarPosition* request, ::Step* response) {
+::grpc::Status Guide::Service::GetNextStep(::grpc::ServerContext* context, const ::Point* request, ::Step* response) {
   (void) context;
   (void) request;
   (void) response;
