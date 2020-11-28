@@ -9,7 +9,12 @@ find_package(gRPC CONFIG REQUIRED)
 
 add_executable(server main_server.cc guide_service_impl.cc util.cc guide.grpc.pb.cc guide.pb.cc)
 add_executable(client main_client.cc guide.grpc.pb.cc guide.pb.cc)
+add_library(guidepycli SHARED guidepycli.cc guide.grpc.pb.cc guide.pb.cc)
+
+set_property(TARGET guidepycli PROPERTY POSITION_INDEPENDENT_CODE ON)
+set_target_properties(guidepycli PROPERTIES PREFIX "")
 
 target_link_libraries(server gRPC::grpc++)
 target_link_libraries(server Threads::Threads)
 target_link_libraries(client gRPC::grpc++)
+target_link_libraries(guidepycli gRPC::grpc++)
