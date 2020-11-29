@@ -31,6 +31,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -65,6 +66,34 @@ template<> ::Point* Arena::CreateMaybeMessage<::Point>(Arena*);
 template<> ::Step* Arena::CreateMaybeMessage<::Step>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
+enum Step_StepCode : int {
+  Step_StepCode_LEFT = 0,
+  Step_StepCode_RIGHT = 1,
+  Step_StepCode_FORWARD = 2,
+  Step_StepCode_BACKWARD = 3,
+  Step_StepCode_STOP = 4,
+  Step_StepCode_Step_StepCode_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  Step_StepCode_Step_StepCode_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool Step_StepCode_IsValid(int value);
+constexpr Step_StepCode Step_StepCode_StepCode_MIN = Step_StepCode_LEFT;
+constexpr Step_StepCode Step_StepCode_StepCode_MAX = Step_StepCode_STOP;
+constexpr int Step_StepCode_StepCode_ARRAYSIZE = Step_StepCode_StepCode_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Step_StepCode_descriptor();
+template<typename T>
+inline const std::string& Step_StepCode_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, Step_StepCode>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function Step_StepCode_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    Step_StepCode_descriptor(), enum_t_value);
+}
+inline bool Step_StepCode_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, Step_StepCode* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Step_StepCode>(
+    Step_StepCode_descriptor(), name, value);
+}
 // ===================================================================
 
 class Point PROTOBUF_FINAL :
@@ -380,28 +409,54 @@ class Step PROTOBUF_FINAL :
 
   // nested types ----------------------------------------------------
 
+  typedef Step_StepCode StepCode;
+  static constexpr StepCode LEFT =
+    Step_StepCode_LEFT;
+  static constexpr StepCode RIGHT =
+    Step_StepCode_RIGHT;
+  static constexpr StepCode FORWARD =
+    Step_StepCode_FORWARD;
+  static constexpr StepCode BACKWARD =
+    Step_StepCode_BACKWARD;
+  static constexpr StepCode STOP =
+    Step_StepCode_STOP;
+  static inline bool StepCode_IsValid(int value) {
+    return Step_StepCode_IsValid(value);
+  }
+  static constexpr StepCode StepCode_MIN =
+    Step_StepCode_StepCode_MIN;
+  static constexpr StepCode StepCode_MAX =
+    Step_StepCode_StepCode_MAX;
+  static constexpr int StepCode_ARRAYSIZE =
+    Step_StepCode_StepCode_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  StepCode_descriptor() {
+    return Step_StepCode_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& StepCode_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, StepCode>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function StepCode_Name.");
+    return Step_StepCode_Name(enum_t_value);
+  }
+  static inline bool StepCode_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      StepCode* value) {
+    return Step_StepCode_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
-    kNextXFieldNumber = 1,
-    kNextYFieldNumber = 2,
+    kStepCodeFieldNumber = 1,
   };
-  // int32 nextX = 1;
-  void clear_nextx();
-  ::PROTOBUF_NAMESPACE_ID::int32 nextx() const;
-  void set_nextx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // .Step.StepCode step_code = 1;
+  void clear_step_code();
+  ::Step_StepCode step_code() const;
+  void set_step_code(::Step_StepCode value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_nextx() const;
-  void _internal_set_nextx(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
-
-  // int32 nextY = 2;
-  void clear_nexty();
-  ::PROTOBUF_NAMESPACE_ID::int32 nexty() const;
-  void set_nexty(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_nexty() const;
-  void _internal_set_nexty(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::Step_StepCode _internal_step_code() const;
+  void _internal_set_step_code(::Step_StepCode value);
   public:
 
   // @@protoc_insertion_point(class_scope:Step)
@@ -411,8 +466,7 @@ class Step PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::int32 nextx_;
-  ::PROTOBUF_NAMESPACE_ID::int32 nexty_;
+  int step_code_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_guide_2eproto;
 };
@@ -571,44 +625,24 @@ inline void Point::set_goaly(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
 // Step
 
-// int32 nextX = 1;
-inline void Step::clear_nextx() {
-  nextx_ = 0;
+// .Step.StepCode step_code = 1;
+inline void Step::clear_step_code() {
+  step_code_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Step::_internal_nextx() const {
-  return nextx_;
+inline ::Step_StepCode Step::_internal_step_code() const {
+  return static_cast< ::Step_StepCode >(step_code_);
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Step::nextx() const {
-  // @@protoc_insertion_point(field_get:Step.nextX)
-  return _internal_nextx();
+inline ::Step_StepCode Step::step_code() const {
+  // @@protoc_insertion_point(field_get:Step.step_code)
+  return _internal_step_code();
 }
-inline void Step::_internal_set_nextx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void Step::_internal_set_step_code(::Step_StepCode value) {
   
-  nextx_ = value;
+  step_code_ = value;
 }
-inline void Step::set_nextx(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_nextx(value);
-  // @@protoc_insertion_point(field_set:Step.nextX)
-}
-
-// int32 nextY = 2;
-inline void Step::clear_nexty() {
-  nexty_ = 0;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int32 Step::_internal_nexty() const {
-  return nexty_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int32 Step::nexty() const {
-  // @@protoc_insertion_point(field_get:Step.nextY)
-  return _internal_nexty();
-}
-inline void Step::_internal_set_nexty(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  
-  nexty_ = value;
-}
-inline void Step::set_nexty(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_nexty(value);
-  // @@protoc_insertion_point(field_set:Step.nextY)
+inline void Step::set_step_code(::Step_StepCode value) {
+  _internal_set_step_code(value);
+  // @@protoc_insertion_point(field_set:Step.step_code)
 }
 
 #ifdef __GNUC__
@@ -619,6 +653,16 @@ inline void Step::set_nexty(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::Step_StepCode> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::Step_StepCode>() {
+  return ::Step_StepCode_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

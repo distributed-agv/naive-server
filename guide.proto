@@ -11,8 +11,14 @@ message Point {
 }
 
 message Step {
-  int32 nextX = 1;
-  int32 nextY = 2;
+  enum StepCode {
+    LEFT = 0;
+    RIGHT = 1;
+    FORWARD = 2;
+    BACKWARD = 3;
+    STOP = 4;
+  }
+  StepCode step_code = 1;
 }
 
 service Guide {

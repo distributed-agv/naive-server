@@ -51,7 +51,7 @@ static void InitDefaultsscc_info_Step_guide_2eproto() {
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Step_guide_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_guide_2eproto[2];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_guide_2eproto = nullptr;
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_guide_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_guide_2eproto = nullptr;
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_guide_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -72,8 +72,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_guide_2eproto::offsets[] PROTO
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Step, nextx_),
-  PROTOBUF_FIELD_OFFSET(::Step, nexty_),
+  PROTOBUF_FIELD_OFFSET(::Step, step_code_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Point)},
@@ -89,9 +88,11 @@ const char descriptor_table_protodef_guide_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "\n\013guide.proto\"l\n\005Point\022\013\n\003car\030\001 \001(\005\022\r\n\005l"
   "astX\030\002 \001(\005\022\r\n\005lastY\030\003 \001(\005\022\014\n\004nowX\030\004 \001(\005\022"
   "\014\n\004nowY\030\005 \001(\005\022\r\n\005goalX\030\006 \001(\005\022\r\n\005goalY\030\007 "
-  "\001(\005\"$\n\004Step\022\r\n\005nextX\030\001 \001(\005\022\r\n\005nextY\030\002 \001("
-  "\0052\'\n\005Guide\022\036\n\013GetNextStep\022\006.Point\032\005.Step"
-  "\"\000b\006proto3"
+  "\001(\005\"o\n\004Step\022!\n\tstep_code\030\001 \001(\0162\016.Step.St"
+  "epCode\"D\n\010StepCode\022\010\n\004LEFT\020\000\022\t\n\005RIGHT\020\001\022"
+  "\013\n\007FORWARD\020\002\022\014\n\010BACKWARD\020\003\022\010\n\004STOP\020\0042\'\n\005"
+  "Guide\022\036\n\013GetNextStep\022\006.Point\032\005.Step\"\000b\006p"
+  "roto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_guide_2eproto_deps[1] = {
 };
@@ -101,7 +102,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_gui
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_guide_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_guide_2eproto = {
-  false, false, descriptor_table_protodef_guide_2eproto, "guide.proto", 210,
+  false, false, descriptor_table_protodef_guide_2eproto, "guide.proto", 285,
   &descriptor_table_guide_2eproto_once, descriptor_table_guide_2eproto_sccs, descriptor_table_guide_2eproto_deps, 2, 0,
   schemas, file_default_instances, TableStruct_guide_2eproto::offsets,
   file_level_metadata_guide_2eproto, 2, file_level_enum_descriptors_guide_2eproto, file_level_service_descriptors_guide_2eproto,
@@ -109,6 +110,33 @@ const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_guide_
 
 // Force running AddDescriptors() at dynamic initialization time.
 static bool dynamic_init_dummy_guide_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_guide_2eproto)), true);
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Step_StepCode_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_guide_2eproto);
+  return file_level_enum_descriptors_guide_2eproto[0];
+}
+bool Step_StepCode_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr Step_StepCode Step::LEFT;
+constexpr Step_StepCode Step::RIGHT;
+constexpr Step_StepCode Step::FORWARD;
+constexpr Step_StepCode Step::BACKWARD;
+constexpr Step_StepCode Step::STOP;
+constexpr Step_StepCode Step::StepCode_MIN;
+constexpr Step_StepCode Step::StepCode_MAX;
+constexpr int Step::StepCode_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 
 // ===================================================================
 
@@ -473,16 +501,12 @@ Step::Step(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 Step::Step(const Step& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&nextx_, &from.nextx_,
-    static_cast<size_t>(reinterpret_cast<char*>(&nexty_) -
-    reinterpret_cast<char*>(&nextx_)) + sizeof(nexty_));
+  step_code_ = from.step_code_;
   // @@protoc_insertion_point(copy_constructor:Step)
 }
 
 void Step::SharedCtor() {
-  ::memset(&nextx_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&nexty_) -
-      reinterpret_cast<char*>(&nextx_)) + sizeof(nexty_));
+  step_code_ = 0;
 }
 
 Step::~Step() {
@@ -516,9 +540,7 @@ void Step::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&nextx_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&nexty_) -
-      reinterpret_cast<char*>(&nextx_)) + sizeof(nexty_));
+  step_code_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -530,18 +552,12 @@ const char* Step::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inter
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // int32 nextX = 1;
+      // .Step.StepCode step_code = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          nextx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // int32 nextY = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          nexty_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
+          _internal_set_step_code(static_cast<::Step_StepCode>(val));
         } else goto handle_unusual;
         continue;
       default: {
@@ -572,16 +588,11 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 nextX = 1;
-  if (this->nextx() != 0) {
+  // .Step.StepCode step_code = 1;
+  if (this->step_code() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_nextx(), target);
-  }
-
-  // int32 nextY = 2;
-  if (this->nexty() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_nexty(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      1, this->_internal_step_code(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -600,18 +611,10 @@ size_t Step::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 nextX = 1;
-  if (this->nextx() != 0) {
+  // .Step.StepCode step_code = 1;
+  if (this->step_code() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_nextx());
-  }
-
-  // int32 nextY = 2;
-  if (this->nexty() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_nexty());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_step_code());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -645,11 +648,8 @@ void Step::MergeFrom(const Step& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.nextx() != 0) {
-    _internal_set_nextx(from._internal_nextx());
-  }
-  if (from.nexty() != 0) {
-    _internal_set_nexty(from._internal_nexty());
+  if (from.step_code() != 0) {
+    _internal_set_step_code(from._internal_step_code());
   }
 }
 
@@ -674,12 +674,7 @@ bool Step::IsInitialized() const {
 void Step::InternalSwap(Step* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Step, nexty_)
-      + sizeof(Step::nexty_)
-      - PROTOBUF_FIELD_OFFSET(Step, nextx_)>(
-          reinterpret_cast<char*>(&nextx_),
-          reinterpret_cast<char*>(&other->nextx_));
+  swap(step_code_, other->step_code_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Step::GetMetadata() const {

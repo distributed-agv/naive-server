@@ -28,12 +28,12 @@ bool Astar::search( Node* startPos,Node* endPos,int** mapTmp,int *x,int*y)
         current = openList[0];
         if (current->x == endPos->x && current->y == endPos->y)
         {
-            cout<<"find the path"<<endl;
+          
             
             printPath(current,x,y);
             openList.clear();
             closeList.clear();
-            break;
+            
             return true;
         }
         NextStep(current);
@@ -117,17 +117,19 @@ bool Astar::unWalk( int x,int y)
 
 void Astar::printPath( Node* current ,int *x,int *y)
 {
-     while (current!=NULL) {
+     while (current->father!=NULL) {
         if(current->father->x==this->startPos->x&&current->father->y==this->startPos->y)
         {
+            
             *x=current->x;
             *y=current->y;
             printf("(%d,%d)",current->x,current->y);
             return;
+             
         }
         current=current->father;
     }
-
+}
 void Astar::printMap()
 {
     for(int i=0;i<=row;i++){

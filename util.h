@@ -1,68 +1,8 @@
-//
-//  Astar.h
-//  Astar
-//
-//  Created by 斯金泽 on 2020/11/22.
-//  Copyright © 2020 斯金泽. All rights reserved.
-//
-
-#ifndef ASTAR_H
-#define ASTAR_H
-#include <iostream>
-#include <queue>
+#include <utility>
 #include <vector>
-#include <stack>
-#include<algorithm>
-using namespace std;
 
+extern const std::vector<std::pair<int, int>> kSteps;
 
-typedef struct Node
-{
-    int x,y;
-    int g; //起始点到当前点实际代价
-    int h;//当前节点到目标节点最佳路径的估计代价
-    int f;//估计值
-    Node* father;
-    Node(int x,int y)
-    {
-        this->x = x;
-        this->y = y ;
-        this->g = 0;
-        this->h = 0;
-        this->f = 0;
-        this->father = NULL;
-    }
-    Node(int x,int y,Node* father)
-    {
-        this->x = x;
-        this->y = y ;
-        this->g = 0;
-        this->h = 0;
-        this->f = 0;
-        this->father = father;
-    }
-}Node;
-class Astar{
-    public:
-        Astar(int ,int,int);
-        ~Astar();
-        bool search(Node* startPos,Node* endPos,int**,int*,int*);
-
-        void checkPoit(int x,int y,Node* father,int g);
-        void NextStep(Node* currentPoint);
-        int isContains(vector<Node*>* Nodelist ,int x,int y);
-        void countGHF(Node* sNode,Node* eNode,int g);
-        static bool compare(Node* n1,Node* n2);
-        bool unWalk(int x,int y);
-        void printPath(Node* current,int*,int*);
-        void printMap();
-        vector<Node*> openList;
-        vector<Node*> closeList;
-        Node *startPos;
-        Node *endPos;
-        int WeightW = 1;// 正方向消耗
-        int car=0;
-        int row = 6;
-        int col = 8;
-};
-#endif
+bool IsValidPoint(std::pair<int, int>, int, int);
+std::pair<int, int> PointPlus(std::pair<int, int>, std::pair<int, int>);
+std::pair<int, int> PointMinus(std::pair<int, int>, std::pair<int, int>);

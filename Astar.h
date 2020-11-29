@@ -1,11 +1,3 @@
-//
-//  Astar.h
-//  Astar
-//
-//  Created by 斯金泽 on 2020/11/22.
-//  Copyright © 2020 斯金泽. All rights reserved.
-//
-
 #ifndef ASTAR_H
 #define ASTAR_H
 #include <iostream>

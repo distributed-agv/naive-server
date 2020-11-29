@@ -7,7 +7,7 @@
 #include <grpcpp/server.h>
 #include <grpcpp/server_builder.h>
 #include <grpcpp/security/server_credentials.h>
-
+using namespace std;
 int main() {
   GuideImpl service(5, 5);
 
