@@ -1,8 +1,7 @@
-#define PY_SSIZE_T_CLEAN
+#include <python2.7/Python.h>
 #include "guidepycli.h"
 #include "guide.pb.h"
 #include "guide.grpc.pb.h"
-#include <python2.7/Python.h>
 #include <memory>
 #include <grpc/grpc.h>
 #include <grpcpp/channel.h>
